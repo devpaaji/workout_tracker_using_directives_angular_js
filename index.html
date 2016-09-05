@@ -1,0 +1,50 @@
+﻿<!doctype html>
+<html ng-app="gymChartApp">
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
+    <link href="style.css" rel="stylesheet" />
+    <!-- Latest compiled and minified CSS Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!--Angular JS CDN-->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+<body >
+    <div class="header" ng-controller="MainController">
+        <div class="container">
+            <h3>Exercise Performance of Rahul Gulati for {{today | date}}</h3>
+        </div>
+    </div>
+    <div class="main" ng-controller="MainController">
+        <div class="container">
+
+            <!--
+            TODO: Loop through exercises and display each one with this HTML    -->
+
+            <!--Each ng-repeat creates a child scope with the passed data, and 
+                also adds an additional $index variable in that scope.-->
+            <div class="row" ng-repeat="type in exercises">
+                <div class="exercise-icon col-xs-2">
+                    <img ng-src="{{type.icon}}" />
+                </div>
+                <div class="col-xs-6">
+                    <p class="exercise-name">{{type.name}} </p>
+                </div>
+                <div class="col-xs-4 counters">
+                    <span class="decrease" ng-click="decrease($index)">-</span><span class="count">{{type.count}}  </span><span class="increase" ng-click="increase($index)">+</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+        </div>
+    </div>
+    <!-- Modules -->
+    <script src="scripts/app.js"></script>
+
+    <!-- Controllers -->
+    <script src="scripts/main-controller.js"></script>
+</body>
+</html>
